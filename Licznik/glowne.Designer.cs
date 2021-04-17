@@ -49,7 +49,7 @@ namespace Licznik
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(207, 73);
+            this.label1.Location = new System.Drawing.Point(28, 67);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 15);
@@ -59,7 +59,7 @@ namespace Licznik
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 195);
+            this.label2.Location = new System.Drawing.Point(28, 135);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(87, 15);
@@ -69,7 +69,7 @@ namespace Licznik
             // Stan
             // 
             this.Stan.AutoSize = true;
-            this.Stan.Location = new System.Drawing.Point(28, 129);
+            this.Stan.Location = new System.Drawing.Point(28, 97);
             this.Stan.Margin = new System.Windows.Forms.Padding(0);
             this.Stan.Name = "Stan";
             this.Stan.Size = new System.Drawing.Size(72, 15);
@@ -79,7 +79,7 @@ namespace Licznik
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(224, 246);
+            this.label4.Location = new System.Drawing.Point(28, 159);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 15);
@@ -93,7 +93,7 @@ namespace Licznik
             // czas
             // 
             this.czas.AutoSize = true;
-            this.czas.Location = new System.Drawing.Point(100, 73);
+            this.czas.Location = new System.Drawing.Point(28, 24);
             this.czas.Margin = new System.Windows.Forms.Padding(0);
             this.czas.Name = "czas";
             this.czas.Size = new System.Drawing.Size(53, 15);
@@ -102,7 +102,7 @@ namespace Licznik
             // 
             // Zmianataryfy
             // 
-            this.Zmianataryfy.Location = new System.Drawing.Point(0, 285);
+            this.Zmianataryfy.Location = new System.Drawing.Point(291, 285);
             this.Zmianataryfy.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Zmianataryfy.Name = "Zmianataryfy";
             this.Zmianataryfy.Size = new System.Drawing.Size(100, 46);
@@ -113,7 +113,7 @@ namespace Licznik
             // 
             // ZmianaRozliczania
             // 
-            this.ZmianaRozliczania.Location = new System.Drawing.Point(301, 269);
+            this.ZmianaRozliczania.Location = new System.Drawing.Point(62, 285);
             this.ZmianaRozliczania.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.ZmianaRozliczania.Name = "ZmianaRozliczania";
             this.ZmianaRozliczania.Size = new System.Drawing.Size(100, 46);
@@ -123,7 +123,7 @@ namespace Licznik
             // 
             // Symulacja
             // 
-            this.Symulacja.Location = new System.Drawing.Point(106, 347);
+            this.Symulacja.Location = new System.Drawing.Point(173, 285);
             this.Symulacja.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Symulacja.Name = "Symulacja";
             this.Symulacja.Size = new System.Drawing.Size(100, 46);
@@ -139,7 +139,7 @@ namespace Licznik
             // ARozliczanie
             // 
             this.ARozliczanie.AutoSize = true;
-            this.ARozliczanie.Location = new System.Drawing.Point(175, 150);
+            this.ARozliczanie.Location = new System.Drawing.Point(248, 67);
             this.ARozliczanie.Margin = new System.Windows.Forms.Padding(0);
             this.ARozliczanie.Name = "ARozliczanie";
             this.ARozliczanie.Size = new System.Drawing.Size(153, 15);
@@ -149,7 +149,7 @@ namespace Licznik
             // Rozliczanie
             // 
             this.Rozliczanie.AutoSize = true;
-            this.Rozliczanie.Location = new System.Drawing.Point(128, 285);
+            this.Rozliczanie.Location = new System.Drawing.Point(248, 97);
             this.Rozliczanie.Margin = new System.Windows.Forms.Padding(0);
             this.Rozliczanie.Name = "Rozliczanie";
             this.Rozliczanie.Size = new System.Drawing.Size(65, 15);
@@ -158,7 +158,7 @@ namespace Licznik
             // 
             // Wyloguj
             // 
-            this.Wyloguj.Location = new System.Drawing.Point(228, 358);
+            this.Wyloguj.Location = new System.Drawing.Point(333, 19);
             this.Wyloguj.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Wyloguj.Name = "Wyloguj";
             this.Wyloguj.Size = new System.Drawing.Size(100, 24);
@@ -170,7 +170,7 @@ namespace Licznik
             // nazwa
             // 
             this.nazwa.AutoSize = true;
-            this.nazwa.Location = new System.Drawing.Point(100, 18);
+            this.nazwa.Location = new System.Drawing.Point(248, 24);
             this.nazwa.Margin = new System.Windows.Forms.Padding(0);
             this.nazwa.Name = "nazwa";
             this.nazwa.Size = new System.Drawing.Size(42, 15);

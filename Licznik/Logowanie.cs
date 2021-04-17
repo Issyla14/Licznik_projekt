@@ -11,8 +11,10 @@ using System.Windows.Forms;
 
 namespace Licznik
 {
+    
     public partial class Logowanie : Form
     {
+        public static string SetValueForText1 = "";
         public Logowanie()
         {
             InitializeComponent();
@@ -58,6 +60,7 @@ namespace Licznik
                     if (reader.Read())
                     {
                         var name = reader.GetString(0);
+                        SetValueForText1 = textBox1.Text;
                         //MessageBox.Show($"Hello, {username}!", "Hello", MessageBoxButtons.OK);
                         glowne g = new glowne();
                         this.Hide();

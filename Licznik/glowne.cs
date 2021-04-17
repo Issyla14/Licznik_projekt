@@ -26,7 +26,7 @@ namespace Licznik
 
         private void glowne_Load(object sender, EventArgs e)
         {
-            //nazwa.Text = Logowanie.SetValueForText1;//
+            nazwa.Text = Logowanie.SetValueForText1;
             timer1.Start();
             timer2.Start();
         }
