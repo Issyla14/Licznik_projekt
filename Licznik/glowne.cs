@@ -16,17 +16,26 @@ namespace Licznik
     {
                       
         private float zczytanie = 3277;
+      
         
         public glowne()
         {
             InitializeComponent();
             string tekst = File.ReadAllText("file.txt");
+            var olddate = Convert.ToDateTime(File.ReadAllText("data.txt"));
+            string nowadata = DateTime.Now.ToString("s");
+            var newdate = Convert.ToDateTime(nowadata);
+            var roznica = newdate.Subtract(olddate);
+            var res = String.Format("{0}:{1}", roznica.Hours, roznica.Minutes);
+            MessageBox.Show(res);
             zczytanie = float.Parse(tekst);
+            
         }
 
         private void glowne_Load(object sender, EventArgs e)
         {
             nazwa.Text = Logowanie.SetValueForText1;
+          
             timer1.Start();
             timer2.Start();
         }
@@ -38,6 +47,7 @@ namespace Licznik
             timer1.Interval = 4000;
             zczytanie += 1;
             Stan.Text = zczytanie.ToString();
+            
 
         }
 
@@ -66,7 +76,8 @@ namespace Licznik
         {
             string StanK = Stan.Text;
             File.WriteAllTextAsync("file.txt", StanK);
-
+            string Currentdate = DateTime.Now.ToString("s");
+            File.WriteAllTextAsync("data.txt", Currentdate);
             Logowanie l = new Logowanie();
             this.Hide();
             l.ShowDialog();
@@ -77,6 +88,8 @@ namespace Licznik
 
             string StanK = Stan.Text;
             File.WriteAllTextAsync("file.txt", StanK);
+            string Currentdate = DateTime.Now.ToString("s");
+            File.WriteAllTextAsync("data.txt", Currentdate);
             e.Cancel = false;
             
            
