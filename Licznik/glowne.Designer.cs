@@ -102,7 +102,7 @@ namespace Licznik
             // 
             // Zmianataryfy
             // 
-            this.Zmianataryfy.Location = new System.Drawing.Point(291, 285);
+            this.Zmianataryfy.Location = new System.Drawing.Point(285, 285);
             this.Zmianataryfy.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Zmianataryfy.Name = "Zmianataryfy";
             this.Zmianataryfy.Size = new System.Drawing.Size(100, 46);
@@ -158,10 +158,10 @@ namespace Licznik
             // 
             // Wyloguj
             // 
-            this.Wyloguj.Location = new System.Drawing.Point(333, 19);
+            this.Wyloguj.Location = new System.Drawing.Point(351, 19);
             this.Wyloguj.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.Wyloguj.Name = "Wyloguj";
-            this.Wyloguj.Size = new System.Drawing.Size(100, 24);
+            this.Wyloguj.Size = new System.Drawing.Size(68, 24);
             this.Wyloguj.TabIndex = 10;
             this.Wyloguj.Text = "Wyloguj";
             this.Wyloguj.UseVisualStyleBackColor = true;

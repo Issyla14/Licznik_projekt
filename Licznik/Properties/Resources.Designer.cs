@@ -59,5 +59,15 @@ namespace Licznik.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1200px_Tauron_Polskan_logo_svg {
+            get {
+                object obj = ResourceManager.GetObject("1200px-Tauron_Polskan_logo.svg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
