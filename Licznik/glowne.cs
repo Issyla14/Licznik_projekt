@@ -15,9 +15,9 @@ namespace Licznik
     public partial class glowne : Form
     {
                       
-        private float zczytanie = 3277;
-      
-        
+        private double zczytanie = 3277;
+
+
         public glowne()
         {
             InitializeComponent();
@@ -26,10 +26,12 @@ namespace Licznik
             string nowadata = DateTime.Now.ToString("s");
             var newdate = Convert.ToDateTime(nowadata);
             var roznica = newdate.Subtract(olddate);
-            var res = String.Format("{0}:{1}", roznica.Hours, roznica.Minutes);
-            MessageBox.Show(res);
-            zczytanie = float.Parse(tekst);
-            
+            var dni = String.Format("{0}", roznica.Days);
+            var godziny = String.Format("{0}", roznica.Hours);
+            double days = double.Parse(dni);
+            double hours = double.Parse(godziny);
+            zczytanie = double.Parse(tekst) + days * 7 + hours * (0.4);
+                        
         }
 
         private void glowne_Load(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace Licznik
 
             timer1.Interval = 4000;
             zczytanie += 1;
-            Stan.Text = zczytanie.ToString();
+            Stan.Text = zczytanie.ToString("0");
             
 
         }
