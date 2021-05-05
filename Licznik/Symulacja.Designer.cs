@@ -29,6 +29,7 @@ namespace Licznik
         /// </summary>
         private void InitializeComponent()
         {
+
             this.components = new System.ComponentModel.Container();
             this.SG11 = new System.Windows.Forms.RadioButton();
             this.SG12 = new System.Windows.Forms.RadioButton();
@@ -96,7 +97,7 @@ namespace Licznik
             // 
             // powrot2
             // 
-            this.powrot2.Location = new System.Drawing.Point(179, 296);
+            this.powrot2.Location = new System.Drawing.Point(180, 323);
             this.powrot2.Name = "powrot2";
             this.powrot2.Size = new System.Drawing.Size(75, 23);
             this.powrot2.TabIndex = 5;

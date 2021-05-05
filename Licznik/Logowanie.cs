@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Licznik
 {
@@ -18,22 +19,22 @@ namespace Licznik
         public Logowanie()
         {
             InitializeComponent();
-            //using (var connection = new SqliteConnection("Data Source=hello.db"))
-            //{ 
+            //using (var connection = new SqliteConnection("Data Source=stan.db"))
+            //{
             //    connection.Open();
             //    var command = connection.CreateCommand();
             //    command.CommandText =
             //        @"
-            //            create table user(id integer primary key, username text, password text)
+            //            create table user(data string, godzina int, zuzycie real)
                         
             //        ";
             //    command.ExecuteNonQuery();
-            //    command.CommandText =
-            //       @"
-            //            INSERT INTO user(username, password) values('admin', '123')
+                //command.CommandText =
+                //   @"
+                //        INSERT INTO user(username, password) values('admin', '123')
                         
-            //        ";
-            //   command.ExecuteNonQuery();
+                //    ";
+                //command.ExecuteNonQuery();
             //}
         }
 
@@ -79,5 +80,14 @@ namespace Licznik
         {
 
         }
+        private void Logowanie_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            string Currentdate = DateTime.Now.ToString("s");
+            File.WriteAllTextAsync("data.txt", Currentdate);
+            e.Cancel = false;
+
+        }
+
     }
 }
