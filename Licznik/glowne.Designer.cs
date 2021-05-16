@@ -120,6 +120,7 @@ namespace Licznik
             this.ZmianaRozliczania.TabIndex = 6;
             this.ZmianaRozliczania.Text = "Zmiana Rozliczania";
             this.ZmianaRozliczania.UseVisualStyleBackColor = true;
+            this.ZmianaRozliczania.Click += new System.EventHandler(this.ZmianaRozliczania_Click);
             // 
             // Symulacja
             // 
@@ -152,9 +153,9 @@ namespace Licznik
             this.Rozliczanie.Location = new System.Drawing.Point(248, 97);
             this.Rozliczanie.Margin = new System.Windows.Forms.Padding(0);
             this.Rozliczanie.Name = "Rozliczanie";
-            this.Rozliczanie.Size = new System.Drawing.Size(65, 15);
+            this.Rozliczanie.Size = new System.Drawing.Size(74, 15);
             this.Rozliczanie.TabIndex = 9;
-            this.Rozliczanie.Text = "Rozliczanie";
+            this.Rozliczanie.Text = "1 miesięczne";
             // 
             // Wyloguj
             // 
@@ -217,8 +218,8 @@ namespace Licznik
         private System.Windows.Forms.Button Symulacja;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label ARozliczanie;
-        private System.Windows.Forms.Label Rozliczanie;
         private System.Windows.Forms.Button Wyloguj;
         private System.Windows.Forms.Label nazwa;
+        public System.Windows.Forms.Label Rozliczanie;
     }
 }

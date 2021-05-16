@@ -28,168 +28,289 @@ namespace Licznik
             G11Info.SetToolTip(SG11, "0.3385 zł/kWh");
             G12Info.SetToolTip(SG12, "Strefa 1: 0.4037 zł/kWh\nStrefa 2: 0.2572 zł/kWh");
             G13Info.SetToolTip(SG13, "Strefa 1: 0.3793 zł/kWh\nStrefa 2: 0.5534 zł/kWh\nStrefa 3: 0.275 zł/kWh");
+            label2.Text = glowne.SetValueForText1;
            
             void ARadioButton_CheckedChanged(object sender, EventArgs e)
             {
                 using (var connection = new SqliteConnection("Data Source=stan.db"))
                 {
                     connection.Open();
-                    //dla taryfy G11
-                    var strefa = connection.CreateCommand();
-                    strefa.CommandText =
-                        @"SELECT sum(zuzycie) FROM stan ";
-                    double wynik = double.Parse(strefa.ExecuteScalar().ToString());
-                    //dla taryfy G12
-                    //strefa nocna
-                    var nocna = connection.CreateCommand();
-                    nocna.CommandText =
-                     @"SELECT sum(zuzycie) FROM stan
-                        WHERE godzina BETWEEN 14 AND 15 
-                        OR  godzina = 23
-                        OR godzina BETWEEN 0 AND 6
-                        ";
-                    double nocny = double.Parse(nocna.ExecuteScalar().ToString());
-                    //strefa dzienna
-                    var dzienna = connection.CreateCommand();
-                    dzienna.CommandText =
-                     @"SELECT sum(zuzycie) FROM stan
-                        WHERE godzina BETWEEN 7 AND 13 
-                        OR  godzina BETWEEN 16 AND 22
-                        ";
-                    double dzienny = double.Parse(dzienna.ExecuteScalar().ToString());
+                    List<double> lst = new List<double>();
+                    connection.Open();
+                    var zuzycie = connection.CreateCommand();
+                    zuzycie.CommandText =
+                        @"SELECT strftime('%m',data), godzina,  zuzycie FROM stan";
 
-                    //lato dla taryfy G13
-                    var latoprzed = connection.CreateCommand();
-                    latoprzed.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '04' AND '09')
-                        AND godzina BETWEEN 8 and 12
-                        ";
-                    double latoprzedpoludniem = double.Parse(latoprzed.ExecuteScalar().ToString());
-
-                    var latopo = connection.CreateCommand();
-                    latopo.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '04' AND '09')
-                        AND godzina BETWEEN 20 and 21
-                        ";
-                    double latopopoludniu = double.Parse(latopo.ExecuteScalar().ToString());
-
-                    var latopoz = connection.CreateCommand();
-                    latopoz.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '04' AND '09')
-                        AND godzina BETWEEN 13 and 19
-                        OR godzina BETWEEN 22 and 7
-                        ";
-                    double latopozostale = double.Parse(latopoz.ExecuteScalar().ToString());
-
-                    // zima dla taryfy G13
-                    var zimaprzed = connection.CreateCommand();
-                    zimaprzed.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '10' AND '12')
-                        AND godzina BETWEEN 8 and 12
-                        ";
-                    var cos = zimaprzed.ExecuteScalar();
-                    double zimaprzedpoludniem = 0;
-                    if (cos != DBNull.Value && cos != null)
+                    var reader = zuzycie.ExecuteReader();
+                    while (reader.Read())
                     {
-                        zimaprzedpoludniem = double.Parse(cos.ToString());
+                        var zuzyciestr = reader["zuzycie"].ToString();
+                        lst.Add(double.Parse(zuzyciestr));
                     }
 
-                    var zimapo = connection.CreateCommand();
-                    zimapo.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '10' AND '12')
-                        AND godzina BETWEEN 17 and 20
-                        ";
-                    var cos2 = zimapo.ExecuteScalar();
-                    double zimapopoludniu = 0;
-                    if (cos2 != DBNull.Value && cos2 != null)
-                    {
-                        zimapopoludniu = double.Parse(cos2.ToString());
-                    }
-               
+                    List<double> lst2 = new List<double>();
+                    var miesiac = connection.CreateCommand();
+                    miesiac.CommandText =
+                        @"SELECT strftime('%m',data), godzina,  zuzycie FROM stan";
 
-                    var zimapoz = connection.CreateCommand();
-                    zimapoz.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '10' AND '12')
-                        AND godzina BETWEEN 13 and 16
-                        OR godzina BETWEEN 21 and 7
-                        ";
-                    var cos3 = zimapoz.ExecuteScalar();
-                    double zimapozostale = 0;
-                     if (cos3 != DBNull.Value && cos3 != null)
+                    var reader2 = miesiac.ExecuteReader();
+                    while (reader2.Read())
                     {
-                        zimapozostale = double.Parse(cos3.ToString());
+                        var msc = reader2["strftime('%m',data)"].ToString();
+                        lst2.Add(double.Parse(msc));
                     }
+                    List<int> lst3 = new List<int>();
+                    var godziny = connection.CreateCommand();
+                    godziny.CommandText =
+                        @"SELECT strftime('%m',data), godzina,  zuzycie  FROM stan";
 
-                    //druga czesc
-                    var zimaprzed2 = connection.CreateCommand();
-                    zimaprzed2.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '01' AND '03')
-                        AND godzina BETWEEN 8 and 12
-                        ";
-                    var cos4 = zimaprzed2.ExecuteScalar();
-                    double zimaprzedpoludniem2 = 0;
-                    if (cos4 != DBNull.Value && cos4 != null)
+                    var reader3 = godziny.ExecuteReader();
+                    while (reader3.Read())
                     {
-                        zimaprzedpoludniem2 = double.Parse(cos4.ToString());
+                        var godzina = reader3["godzina"].ToString();
+                        lst3.Add(int.Parse(godzina));
                     }
-
-                    var zimapo2 = connection.CreateCommand();
-                    zimapo2.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '01' AND '03')
-                        AND godzina BETWEEN 17 and 20
-                        ";
-                    var cos5 = zimapo2.ExecuteScalar();
-                    double zimapopoludniu2 = 0;
-                    if (cos5 != DBNull.Value && cos5 != null)
+                                    
+                    var line1 = new OxyPlot.Series.LineSeries()
                     {
-                        zimapopoludniu2 = double.Parse(cos5.ToString());
-                    }
+                        Title = $"Series  1",
+                        Color = OxyPlot.OxyColors.Blue,
+                        StrokeThickness = 1,
+                    };
+                    var m = connection.CreateCommand();
+                    m.CommandText =
+                         @"SELECT strftime('%m',data) from stan
+                            Group by data
+                            ORDER by data DESC LIMIT 1";
+                    var month = m.ExecuteScalar();
+                    double mscrozliczanie = double.Parse(month.ToString());
+                    mscrozliczanie = mscrozliczanie - 1;
+                    
+                    double G11s = 0;
+                    double nocny = 0;
+                    double dzienny = 0;
+                    double przed = 0;
+                    double po = 0;
+                    double pozostale = 0;
+                  if (label2.Text == "1 miesięczne")
+                  { 
+                        for (int j = 0; j < lst2.Count; j++)
+                        {
+                            if (lst2[j] == mscrozliczanie)
+                            {
 
-                    var zimapoz2 = connection.CreateCommand();
-                    zimapoz2.CommandText =
-                     @"SELECT  sum(zuzycie) from stan
-                        WHERE (strftime('%m',data) BETWEEN '01' AND '03')
-                        AND godzina BETWEEN 13 and 16
-                        OR godzina BETWEEN 21 and 7
-                        ";
-                    var cos6 = zimapoz2.ExecuteScalar();
-                    double zimapozostale2 = 0;
-                    if (cos6 != DBNull.Value && cos6 != null)
+                                G11s = G11s + lst[j];
+                            }
+                        }
+                 
+                        for (int i = 0; i < lst3.Count; i++)
+                        {
+                            if (lst2[i] == mscrozliczanie)
+                            {
+                                if (lst3[i] >= 7 && lst3[i] <= 13)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                                else if (lst3[i] >= 16 && lst3[i] <= 22)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                            }
+                        }
+                        for (int k = 0; k < lst3.Count; k++)
+                        {
+                            if (lst2[k] == mscrozliczanie)
+                            {
+                                if (lst2[k] >= 4 && lst2[k] <= 9)
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 20 && lst3[k] <= 21)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 17 && lst3[k] <= 20)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                  else if (label2.Text == "2 miesięczne")
                     {
-                        zimapozostale2 = double.Parse(cos6.ToString());
-                    }
+                        for (int j = 0; j < lst2.Count; j++)
+                        {
+                            if (lst2[j] == mscrozliczanie-1)
+                            {
 
+                                G11s = G11s + lst[j];
+                            }
+                        }
+
+                        for (int i = 0; i < lst3.Count; i++)
+                        {
+                            if (lst2[i] == mscrozliczanie - 1)
+                            {
+                                if (lst3[i] >= 7 && lst3[i] <= 13)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                                else if (lst3[i] >= 16 && lst3[i] <= 22)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                            }
+                        }
+                        for (int k = 0; k < lst3.Count; k++)
+                        {
+                            if (lst2[k] == mscrozliczanie - 1)
+                            {
+                                if (lst2[k] >= 4 && lst2[k] <= 9)
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 20 && lst3[k] <= 21)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 17 && lst3[k] <= 20)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+                                }
+
+                            }
+                        }
+                        for (int j = 0; j < lst2.Count; j++)
+                        {
+                            if (lst2[j] == mscrozliczanie)
+                            {
+
+                                G11s = G11s + lst[j];
+                            }
+                        }
+
+                        for (int i = 0; i < lst3.Count; i++)
+                        {
+                            if (lst2[i] == mscrozliczanie)
+                            {
+                                if (lst3[i] >= 7 && lst3[i] <= 13)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                                else if (lst3[i] >= 16 && lst3[i] <= 22)
+                                {
+                                    dzienny = dzienny + lst[i];
+                                }
+                            }
+                        }
+                        for (int k = 0; k < lst3.Count; k++)
+                        {
+                            if (lst2[k] == mscrozliczanie)
+                            {
+                                if (lst2[k] >= 4 && lst2[k] <= 9)
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 20 && lst3[k] <= 21)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+
+                                }
+                                else
+                                {
+                                    if (lst3[k] >= 8 && lst3[k] <= 12)
+                                    {
+                                        przed = przed + lst[k];
+                                    }
+                                    else if (lst3[k] >= 17 && lst3[k] <= 20)
+                                    {
+                                        po = po + lst[k];
+                                    }
+                                    else
+                                    {
+                                        pozostale = pozostale + lst[k];
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                    nocny = G11s - dzienny;
+                    double G12s = 0;
+                    G12s = nocny * 0.2572 + dzienny * 0.4037;
+                    double G13s = 0;
+                    G13s = przed * 0.3793 + po * 0.5534 + pozostale * 0.275;
+                   
                     if (sender is RadioButton)
                     {
                         RadioButton radioButton = (RadioButton)sender;
                         if (SG11.Checked)
                         {
-                            WynikSzacowania.Text = (wynik * 0.3385).ToString("0.00");
+                            WynikSzacowania.Text = (G11s * 0.3385).ToString("0.00");
                         }
                         else if (SG12.Checked)
                         {
-                            WynikSzacowania.Text = (nocny * 0.2572 + dzienny *  0.4037).ToString("0.00");
+                            WynikSzacowania.Text = (G12s.ToString("0.00"));
                         }
                         else if (SG13.Checked)
                         {
-                           WynikSzacowania.Text = ((latoprzedpoludniem + zimaprzedpoludniem + zimaprzedpoludniem2) * 0.3793 + (latopopoludniu+zimapopoludniu+ zimapopoludniu2) *0.5534 + (latopozostale+zimapozostale+ zimapozostale2) *0.2750).ToString("0.00");
+                            WynikSzacowania.Text = (G13s.ToString("0.00"));
                         }
+
+                        
                     }
-                    
+
                 }
+
             }
         }
-       
-       
-
+  
         private void powrot2_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -211,6 +332,10 @@ namespace Licznik
 
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Chart chart = new Chart();
+            chart.Show();
+        }
     }
 }

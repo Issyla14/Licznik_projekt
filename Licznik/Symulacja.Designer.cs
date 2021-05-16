@@ -29,7 +29,6 @@ namespace Licznik
         /// </summary>
         private void InitializeComponent()
         {
-
             this.components = new System.ComponentModel.Container();
             this.SG11 = new System.Windows.Forms.RadioButton();
             this.SG12 = new System.Windows.Forms.RadioButton();
@@ -42,6 +41,9 @@ namespace Licznik
             this.G11Info = new System.Windows.Forms.ToolTip(this.components);
             this.G12Info = new System.Windows.Forms.ToolTip(this.components);
             this.G13Info = new System.Windows.Forms.ToolTip(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SG11
@@ -82,9 +84,9 @@ namespace Licznik
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(276, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 15);
+            this.label1.Size = new System.Drawing.Size(106, 15);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Szacowana kwota";
+            this.label1.Text = "Sumaryczna kwota";
             // 
             // WynikSzacowania
             // 
@@ -118,11 +120,32 @@ namespace Licznik
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(180, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Wykres";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(276, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "label2";
+            // 
             // Symulacja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 413);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.czas);
             this.Controls.Add(this.powrot2);
             this.Controls.Add(this.WynikSzacowania);
@@ -144,12 +167,14 @@ namespace Licznik
         private System.Windows.Forms.RadioButton SG13;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label WynikSzacowania;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button powrot2;
         private System.Windows.Forms.Label czas;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolTip G11Info;
         private System.Windows.Forms.ToolTip G12Info;
         private System.Windows.Forms.ToolTip G13Info;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label2;
     }
 }

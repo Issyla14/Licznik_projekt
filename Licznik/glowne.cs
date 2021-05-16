@@ -59,16 +59,22 @@ namespace Licznik
             }
 
         }
+        public static string SetValueForText1 = "";
 
         private void glowne_Load(object sender, EventArgs e)
         {
+            
+             SetValueForText1 = Rozliczanie.Text;
             nazwa.Text = Logowanie.SetValueForText1;
             timer1.Interval = 1000 * 60 *60;
             Stan.Text = zczytanie.ToString("0.00");
             timer1.Start();
             timer2.Start();
         }
-        
+        public string rozlicz
+        {
+            get { return Rozliczanie.Text; }
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -94,6 +100,7 @@ namespace Licznik
             
 
         }
+        
 
         private void Zmianataryfy_Click(object sender, EventArgs e)
         {
@@ -138,6 +145,13 @@ namespace Licznik
             
            
            
+        }
+
+        private void ZmianaRozliczania_Click(object sender, EventArgs e)
+        {
+            formarozliczania z = new formarozliczania(this);
+            this.Visible = false;
+            z.ShowDialog();
         }
     }
 }

@@ -1,0 +1,107 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Rozliczenie 1 miesięczne 
+- Rozliczasz się na bieżąco
+- Inkasent odczytuje stan licznika co miesiąc
+- Opłata: 5,61 zł brutto (do każdego rachunku) 
+zgodnie z taryfą dystrybucyjną
+
+Wypełnij wniosek o zawarcie lub zmianę 
+warunków umowy kompleksowej oraz
+ załącznik nr 1,  zaznacz w części
+„wybierz rodzaj rozliczenia” – inne i wpisz 
+rozliczenie 1 miesięczne.
+</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Rozliczenie 2 miesięczne
+- Rozliczasz się na bieżąco
+- Inkasent odczytuje stan licznika co 2 miesiące
+- Opłata: 2,80 zł brutto (do każdego rachunku)
+zgodnie z taryfą dystrybucyjną
+
+Wypełnij wniosek o zawarcie lub zmianę 
+warunków umowy kompleksowej oraz 
+załącznik nr 1,  zaznacz w części 
+„wybierz rodzaj rozliczenia” – inne
+i wpisz rozliczenie 2 miesięczne.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Prognoza
+- Raz na pół roku nasz pracownik odczytuje stan Twojego licznika
+- Otrzymasz 5 blankietów wpłat, które będziesz opłacać co miesiąc
+- Raz na 6 miesięcy wysyłamy Ci fakturę 
+rozliczeniową (możesz mieć wtedy nadpłatę lub niedopłatę)
+- Opłata: 0,97 zł brutto (do każdego rachunku) zgodnie z taryfą dystrybutora
+
+Zmiana wysokości prognozy wypełnij 
+wniosek online, aby zmienić wysokość 
+aktualnej prognozy
+Zmiana terminu płatności wypełnij 
+wniosek online, aby wybrać inny termin płatności
+Wypełnij wniosek o zawarcie lub 
+zmianę warunków umowy kompleksowej i zaznacz
+ w części „wybierz rodzaj rozliczenia” – prognoza.</value>
+  </data>
+  <metadata name="$this.Locked" type="System.Boolean, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>True</value>
+  </metadata>
+</root>
